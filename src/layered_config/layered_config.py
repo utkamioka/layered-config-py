@@ -30,7 +30,7 @@ class LayeredConfig:
 
     @classmethod
     def _load_file_if_exists(cls, path: str | os.PathLike) -> MutableMapping | None:
-        path = Path(path)
+        path = Path(path).expanduser()
         if path.exists():
             logger.debug("Loading configuration from %s", path)
             return toml.load(path)
