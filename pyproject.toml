@@ -1,0 +1,39 @@
+[project]
+name = "layered-config-py"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Yutaka Kamioka", email = "umaibow@gmail.com" }
+]
+dependencies = [
+    "toml>=0.10.2",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "pytest>=8.0.2",
+    "ipython>=8.12.3",
+    "radon>=6.0.1",
+    "black>=24.2.0",
+    "pytest-random-order>=1.1.1",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/layered_config_py"]
+
+[tool.black]
+line-length = 100
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "--random-order-bucket=module"
